@@ -40,12 +40,6 @@ session_start();
 	<?php require('chunks/description.php'); ?>
 
 
-    <?php require('chunks/rezervace.php'); ?>
-
-
-    <?php require('chunks/menu.php'); ?>
-
-
 	<?php require('chunks/footer.php'); ?>
 
 
@@ -59,6 +53,7 @@ session_start();
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <script src="js/ajax.js"></script>
     <script src="js/loaders.js"></script>
 </body>
 </html>
