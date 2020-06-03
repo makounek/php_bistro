@@ -11,7 +11,7 @@ try {
 		
 } catch (Exception $e) {
 
-	$arr = array ('code'=>"0",'msg'=>"There were some problem in the Server! Try after some time!");
+	$arr = array ('code'=>"0",'msg'=>"Problém na straně serveru. Zkuste později.");
 
 	echo json_encode($arr);
 
@@ -20,18 +20,18 @@ try {
 }
 
 if (!isset($_SESSION['user']) || !isset($_SESSION['user_id'])) {
-	$_SESSION['msg'] = "You must Log In First to Order Food!";
-	header('location: ../rezervace.php');
+	$_SESSION['msg'] = "Musíte být přihlášen, abyste mohl objednávat.";
+	header('location: ../menu.php');
 	exit();
 }
 
 if (!isset($_REQUEST['id'])) {
-	$_SESSION['msg'] = "Invalid food item! Please try again!";
-	header('location: ../rezervace.php');
+	$_SESSION['msg'] = "Neplatné menu, zkuste znovu.";
+	header('location: ../menu.php');
 	exit();
 }
 
-date_default_timezone_set("Asia/Kolkata");
+date_default_timezone_set("Europe/Prague");
 
 $food_id = $_REQUEST['id'];
 
@@ -50,14 +50,14 @@ $query  = $pdoconn->prepare($sql);
 
 if ($query->execute([$order_id, $user_id, $food_id, $user_name, $timest])) {
 
-	$_SESSION['msg'] = 'Order Placed! Your Order ID is : '.$order_id;
+	$_SESSION['msg'] = 'Objednávka úspěšně poslána! Vaše číslo objednávky je: '.$order_id;
 
-	header('location: ../rezervace.php');
+	header('location: ../menu.php');
 	
 } else {
 
-	$_SESSION['msg'] = 'There were some problem in the server! Please try again after some time!';
+	$_SESSION['msg'] = 'Problém na straně serveru. Zkuste později.';
 
-	header('location: ../rezervace.php');
+	header('location: ../menu.php');
 
 }

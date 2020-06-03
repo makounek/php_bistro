@@ -35,6 +35,9 @@ session_start();
 	<?php require('chunks/navbar.php'); ?>
 
 
+    <?php require('chunks/menu.php'); ?>
+
+
 	<?php require('chunks/footer.php'); ?>
 
 
