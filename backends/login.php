@@ -5,8 +5,9 @@ try {
     if (!file_exists('connection-pdo.php' ))
         throw new Exception();
     else
-        require_once('connection-pdo.php' ); 
-		
+        require_once('connection-pdo.php' );
+
+
 } catch (Exception $e) {
 
 	$arr = array ('code'=>"0",'msg'=>"Problém na straně serveru. Zkuste později.");
