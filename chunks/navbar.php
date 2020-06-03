@@ -12,9 +12,12 @@
 		        <?php
 
 		        	if (isset($_SESSION['user'])) {
-		        		echo '<li><a href="#" class="hvr-grow">Hi, '.$_SESSION['user'].'</a></li>
+		        		echo '<li><a href="#" class="hvr-grow modal-trigger" data-target="modal3">Hi, '.$_SESSION['user'].'</a></li>
 		        		<li><a href="logout.php" class="hvr-grow">Logout</a></li>';
-		        	} else {
+
+                        require('chunks/profil_modal.php');
+
+                    } else {
 		        		echo '<li><a href="#" class="hvr-grow modal-trigger" data-target="modal1">Přihlásit</a></li>
 		        		<li><a href="#" class="hvr-grow modal-trigger" data-target="modal2">Registrovat</a></li>';
 		        	}

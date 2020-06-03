@@ -44,9 +44,8 @@ $arr_all = $query->fetchAll(PDO::FETCH_ASSOC);
 
         <?php if (count($arr_all) == 0) {
             echo '<div class="section gray center" style="border: 1px solid black; border-radius: 5px;">
-			<p class="header">Sorry No Categories to Display!</p>
+			<p class="header">Žádné menu v nabídce.</p>
 		</div>';
-            //TODO
         } else {  ?>
 
             <?php for ($i=1; $i <= count($arr_all); ) { ?>
