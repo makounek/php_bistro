@@ -9,7 +9,7 @@ try {
 		
 } catch (Exception $e) {
 
-	$arr = array ('code'=>"0",'msg'=>"There were some problem in the Server! Try after some time!");
+	$arr = array ('code'=>"0",'msg'=>"Problém na straně serveru. Zkuste později.");
 
 	echo json_encode($arr);
 
@@ -18,7 +18,7 @@ try {
 }
 
 if (!isset($_POST['email']) || !isset($_POST['password'])) {
-	$arr = array ('code'=>"0",'msg'=>"Invalid POST variable keys! Refresh the page!");
+	$arr = array ('code'=>"0",'msg'=>"Zkuste refreshovat stránku.");
 
 	echo json_encode($arr);
 	exit();
@@ -30,7 +30,7 @@ $regex_password = '/^[(A-Z)?(a-z)?(0-9)?!?@?#?-?_?%?]+$/';
 
 if (!preg_match($regex_email, $_POST['email']) || !preg_match($regex_password, $_POST['password'])) {
 
-	$arr = array ('code'=>"0",'msg'=>"Whoa! Invalid Inputs!");
+	$arr = array ('code'=>"0",'msg'=>"Špatný vstup.");
 
 	echo json_encode($arr);
 
@@ -65,14 +65,14 @@ if (!preg_match($regex_email, $_POST['email']) || !preg_match($regex_password, $
 			$_SESSION['user'] = explode(" ", $tmp_name)[0];
 			$_SESSION['user_id'] = $tmp_id;
 				
-			$arr = array ('code'=>"1",'msg'=>"You are Logged In!");
+			$arr = array ('code'=>"1",'msg'=>"Jste přihlášen.");
 
 			echo json_encode($arr);
 
 
 
 		} else {
-			$arr = array ('code'=>"0",'msg'=>"Invalid Password!");
+			$arr = array ('code'=>"0",'msg'=>"Špatné heslo!");
 
 			echo json_encode($arr);
 
@@ -82,7 +82,7 @@ if (!preg_match($regex_email, $_POST['email']) || !preg_match($regex_password, $
 	} else {
 
 
-		$arr = array ('code'=>"0",'msg'=>"No such Email ID found!");
+		$arr = array ('code'=>"0",'msg'=>"Takový email neodpovídá žádnému zaregistrovanému účtu.");
 
 		echo json_encode($arr);
 

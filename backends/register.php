@@ -9,7 +9,7 @@ try {
 		
 } catch (Exception $e) {
 
-	$arr = array ('code'=>"0",'msg'=>"There were some problem in the Server! Try after some time!");
+	$arr = array ('code'=>"0",'msg'=>"Problém na straně serveru. Zkuste později.");
 
 	echo json_encode($arr);
 
@@ -18,7 +18,7 @@ try {
 }
 
 if (!isset($_POST['name']) || !isset($_POST['email']) || !isset($_POST['password'])) {
-	$arr = array ('code'=>"0",'msg'=>"Invalid POST variable keys! Refresh the page!");
+	$arr = array ('code'=>"0",'msg'=>"Refreshujte stránku.");
 
 	echo json_encode($arr);
 	exit();
@@ -31,7 +31,7 @@ $regex_password = '/^[(A-Z)?(a-z)?(0-9)?!?@?#?-?_?%?]+$/';
 
 if (!preg_match($regex_name, $_POST['name']) || !preg_match($regex_email, $_POST['email']) || !preg_match($regex_password, $_POST['password'])) {
 
-	$arr = array ('code'=>"0",'msg'=>"Whoa! Invalid Inputs!");
+	$arr = array ('code'=>"0",'msg'=>"Špatný vstup.");
 
 	echo json_encode($arr);
 
@@ -39,7 +39,7 @@ if (!preg_match($regex_name, $_POST['name']) || !preg_match($regex_email, $_POST
 
 } else {
 
-	date_default_timezone_set("Asia/Kolkata");
+	date_default_timezone_set("Europe/Prague");
 
 	$email = $_POST['email'];
 	$name = $_POST['name'];
@@ -55,7 +55,7 @@ if (!preg_match($regex_name, $_POST['name']) || !preg_match($regex_email, $_POST
 	$arr_login=$query->fetchAll(PDO::FETCH_ASSOC);
 
 	if (count($arr_login) != 0) {
-		$arr = array ('code'=>"0",'msg'=>"Duplicate entry found! Try registering with different email id!");
+		$arr = array ('code'=>"0",'msg'=>"Tento email byl již použit, zkuste zadat jiný email.");
 
 		echo json_encode($arr);
 
@@ -67,12 +67,12 @@ if (!preg_match($regex_name, $_POST['name']) || !preg_match($regex_email, $_POST
 	    $query  = $pdoconn->prepare($sql);
 	    if ($query->execute([$name, $email, $password, $timest])) {
 
-	    	$arr = array ('code'=>"1",'msg'=>"You have been registered! Please Go to the Login option for logging in!");
+	    	$arr = array ('code'=>"1",'msg'=>"Jste již registrovaný, můžete se přihlásit.");
 
 			echo json_encode($arr);
 	    	
 	    } else {
-	    	$arr = array ('code'=>"0",'msg'=>"There were some problem in the server! Please try again after some time!");
+	    	$arr = array ('code'=>"0",'msg'=>"Problém na straně serveru. Zkuste později.");
 
 			echo json_encode($arr);
 	    }
