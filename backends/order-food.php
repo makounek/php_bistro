@@ -44,7 +44,10 @@ $order_id = "RSTGF" . strval(mt_rand(100000, 999999));
 $timest = date("d:m:Y h:i:sa");
 
 
-$sql = "INSERT INTO orders(order_id,user_id,food_id,user_name, timestamp) VALUES(?,?,?,?,?)";
+$sql = 'INSERT INTO orders(order_id,user_id,food_id,user_name, timestamp) VALUES(?,?,?,?,?);
+        UPDATE `food` SET `pocet_porci` = pocet_porci - 1 WHERE `food`.`id` = "'.$_REQUEST['id'].'"';
+
+
 
 $query  = $pdoconn->prepare($sql);
 
@@ -53,7 +56,7 @@ if ($query->execute([$order_id, $user_id, $food_id, $user_name, $timest])) {
 	$_SESSION['msg'] = 'Objednávka úspěšně poslána! Vaše číslo objednávky je: '.$order_id;
 
 	header('location: ../menu.php');
-	
+
 } else {
 
 	$_SESSION['msg'] = 'Problém na straně serveru. Zkuste později.';
